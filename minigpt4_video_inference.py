@@ -93,7 +93,7 @@ def prepare_input(vis_processor,video_path,subtitle_path,instruction):
         # skip the video if no frame is extracted
         return None,None
     images = torch.stack(images)
-    instruction = img_placeholder + '\n' + instruction
+    instruction = str(img_placeholder) + '\n' + str(instruction)
     return images,instruction
 def extract_audio(video_path, audio_path):
     video_clip = mp.VideoFileClip(video_path)
