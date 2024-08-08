@@ -3,10 +3,10 @@ model:
   freeze_vit: True
   freeze_qformer: True
   max_txt_len: 256
-  low_resource: False
+  low_resource: False 	
   image_size: 224
   end_sym: "</s>"
-  llama_model: "meta-llama/Llama-2-7b-chat-hf"
+  llama_model: "/scratch/project_2010633/minigpt4_video/Llama-2-7b-chat-hf"
   ckpt: "checkpoints/video_captioning_llama_checkpoint_last.pth" # set the checkpoint to start the training from
   use_grad_checkpoint: True
   chat_template: True
