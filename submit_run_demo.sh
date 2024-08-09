@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=ragdriver
+#SBATCH --job-name=minigpt4
 #SBATCH --account=project_2010633
 #SBATCH --partition=gpusmall
 #SBATCH --time=00:10:00

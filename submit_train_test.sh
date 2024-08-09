@@ -1,14 +1,12 @@
 #!/bin/bash
-#SBATCH --job-name=ragdriver
+#SBATCH --job-name=minigpt4
 #SBATCH --account=project_2010633
-#SBATCH --partition=gpusmall
+#SBATCH --partition=gpumedium
 #SBATCH --time=00:10:00
-#SBATCH --ntasks=1
+#SBATCH --nodes=2
+#SBATCH --ntasks=8
 #SBATCH --cpus-per-task=32
-#SBATCH --gres=gpu:a100:1
-## if local fast disk on a node is also needed, replace above line with:
-#SBATCH --gres=gpu:a100:1,nvme:900
-#
+#SBATCH --gres=gpu:a100:4
 
 # export PATH="/projappl/project_2010633/Video-LLaVA/videollava_evn/bin:$PATH"
 export PATH="/projappl/project_2010633/MiniGPT4-video/minigpt4_env/bin:$PATH"
