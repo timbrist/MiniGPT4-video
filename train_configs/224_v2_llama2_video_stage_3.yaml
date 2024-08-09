@@ -3,11 +3,11 @@ model:
   freeze_vit: True
   freeze_qformer: True
   max_txt_len: 256
-  low_resource: False 	
+  low_resource: False
   image_size: 224
   end_sym: "</s>"
   llama_model: "/scratch/project_2010633/minigpt4_video/Llama-2-7b-chat-hf"
-  ckpt: "checkpoints/video_captioning_llama_checkpoint_last.pth" # set the checkpoint to start the training from
+  ckpt: "/scratch/project_2010633/minigpt4_video/MiniGPT4-Video/checkpoints/video_captioning_llama_checkpoint_last.pth" # set the checkpoint to start the training from
   use_grad_checkpoint: True
   chat_template: True
   lora_r: 64
@@ -36,7 +36,7 @@ model:
 
 datasets:
   video_chatgpt: #99378 row  - 13224 video
-    batch_size: 4
+    batch_size: 1
     vis_processor:
       train:
         name: "blip2_image_train"
