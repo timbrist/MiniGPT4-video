@@ -44,23 +44,23 @@ datasets:
     text_processor:
       train:
         name: "blip_caption"
-    sample_ratio: 200
+    sample_ratio: 100
 run:
   task: image_text_pretrain
   # optimizer
   lr_sched: "linear_warmup_cosine_lr"
-  init_lr: 1e-4
-  min_lr: 8e-5
+  init_lr: 1e-5
+  min_lr: 8e-6
   warmup_lr: 1e-6
 
-  weight_decay: 0.05
+  weight_decay: 0.01
   max_epoch: 50
-  num_workers: 1
-  warmup_steps: 1000
+  num_workers: 4
+  warmup_steps: 2000
   iters_per_epoch: 1000
 
   seed: 42
-  output_dir: "training_output/pretrained_video_instruct/llama2"
+  output_dir: "/scratch/project_2010633/minigpt4_video/train_output"
 
   amp: True
   resume_ckpt_path: null
@@ -69,6 +69,6 @@ run:
   train_splits: ["train"]
 
   device: "cuda"
-  world_size: 1
+  world_size: 4
   dist_url: "env://"
   distributed: True
