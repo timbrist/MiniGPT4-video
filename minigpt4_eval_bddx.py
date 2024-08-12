@@ -171,6 +171,33 @@ def test():
     print("time taken : ",time.time()-t1)
     print("Number of output words : ",len(pred.split(' ')))
 
+def eval_bddx():
+    video_folder = "/scratch/project_2010633/minigpt4_video/bddx/eval/video"
+    eval_json_path = "/scratch/project_2010633/minigpt4_video/bddx/minigpt4_instruct_eval.json"
+
+    # Read the json to get video id and prompt
+    with open(eval_json_path, 'r') as file:
+        data =  json.load(file)
+
+    #init our evaluator
+    evaluator = Evaluator()
+
+    # evaluate the data from the json file 
+    for d in data:
+        prompt = d['q']
+        video_id = d['video_id']
+        video_path = f"{video_folder}/{video_id}.mp4"
+
+        t1=time.time()
+
+        pred = evaluator.inference(video_path, prompt)
+
+        # save the data TODO
+        print(pred)
+        print("time taken : ",time.time()-t1)
+        print("Number of output words : ",len(pred.split(' ')))
+
+        break
 
 
 if __name__ == "__main__":
