@@ -36,7 +36,7 @@ model:
 
 datasets:
   video_chatgpt: #99378 row  - 13224 video
-    batch_size: 1
+    batch_size: 2
     vis_processor:
       train:
         name: "blip2_image_train"
@@ -50,14 +50,14 @@ run:
   # optimizer
   lr_sched: "linear_warmup_cosine_lr"
   init_lr: 3e-5
-  min_lr: 1e-7
-  warmup_lr: 3e-5
+  min_lr: 1e-5
+  warmup_lr: 1e-6
 
-  weight_decay: 0.0005
-  max_epoch: 30
+  weight_decay: 0.05
+  max_epoch: 5
+  iters_per_epoch: 200
   num_workers: 4
-  warmup_steps: 2000
-  iters_per_epoch: 1000
+  warmup_steps: 200
 
   seed: 42
   output_dir: "/scratch/project_2010633/minigpt4_video/train_output"
