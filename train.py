@@ -94,7 +94,8 @@ def main():
     # set after in
     # it_distributed_mode() to only log on master.
     setup_logger()
-    wandb.login(anonymous="must")
+    ## Set the W&B API key as an environment variable:os.environ['WANDB_API_KEY'] = 'your-api-key-here'
+    wandb.login()
     # print(wandb.run)
     cfg.pretty_print()
 
