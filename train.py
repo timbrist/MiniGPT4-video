@@ -94,7 +94,7 @@ def main():
     # set after in
     # it_distributed_mode() to only log on master.
     setup_logger()
-    wandb.login()
+    wandb.login(anonymous="must")
     # print(wandb.run)
     cfg.pretty_print()
 

@@ -10,7 +10,7 @@ datasets:
 
     build_info:
       # Be careful not to append minus sign (-) before split to avoid itemizing
-      ann_paths: [path/to/annotations_json] # list of paths to annotation files
-      vis_root: path/to/videos_folder
-      subtitles_path: path/to/subtitles_folder # folder that contains subtitles of .vtt format
+      ann_paths: [/scratch/project_2010633/minigpt4_video/bddx/minigpt4_instruct_train.json] # list of paths to annotation files
+      vis_root: /scratch/project_2010633/minigpt4_video/bddx/video
+      subtitles_path: /scratch/project_2010633/minigpt4_video/bddx/train # folder that contains subtitles of .vtt format
       model_name: 'llama2' # Language Model Name (available: llama2, mistral)

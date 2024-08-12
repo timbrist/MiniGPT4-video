@@ -23,6 +23,9 @@ import time
 import transformers
 import whisper
 from datetime import timedelta
+
+import textwrap
+
 # Function to format timestamps for VTT
 def format_timestamp(seconds):
     td = timedelta(seconds=seconds)
@@ -192,7 +195,26 @@ os.makedirs("workspace/inference_subtitles",exist_ok=True)
 
 if __name__ == "__main__":
     video_path=args.video_path
-    instruction=args.question
+    instruction=textwrap.dedent(f"""
+You are an AI assistant helping an autonomous driving vehicle analyze its behaviors. 
+The vehicle's camera has captured a continuous driving scene, 
+Your task is to describe the vehicle's current action and explain the reasoning behind it, 
+based on any potential obstacles, traffic signs, pedestrians, other vehicles, and road conditions.
+Please answer in a format by split the action and justification using ##, for examples: 
+The car stops.##because there is a stop sign.
+The car accelerates slowly to a maintained speed##because traffic is moving smoothly.
+The car moves forward then turns right##because no traffic is blocking the way and the car can safely move forward.
+The car merges into the lane to its right##due to traffic moving freely in that lane.
+The car is slowly moving forward##since traffic is busy
+
+The current video records driving scenario: <video>
+Control Signal until current Frame Sequence is: Speed: [12.86, 13.73, 14.25, 15.05, 15.61, 16.16, 17.08]
+Curvature: [0.0, 0.0, -0.0, 0.0, 0.0, -0.0, -0.04] Acceleration: [0.55, 0.14, 0.37, 0.26, 0.14, 0.43, 0.33]
+Course: [0.0, -0.3, 0.0, -0.54, 0.0, 0.24, 4.53]
+What is the current action of the vehicle and
+Why the vehicle is behaving in this way within 20 words?
+""")
+
     add_subtitles=args.add_subtitles
     setup_seeds(seed)
     t1=time.time()
